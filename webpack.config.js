@@ -5,7 +5,8 @@ var extractPlugin = new ExtractTextPlugin(path.join('css', 'main.css'));
 
 module.exports = {
 	entry: {
-        index: './src/index.js'
+        index: './src/index.js',
+        main: './src/main.scss'
 	},
 	output: {
 		filename: 'js/[name].js',
@@ -13,7 +14,7 @@ module.exports = {
 	},
 	module: {
 		rules: [
-			{test: /\.scss/, use: extractPlugin.extract(['css-loader', 'sass-loader']) }
+			{test: /\.scss/, use: extractPlugin.extract({use: ['css-loader', 'sass-loader']}) }
 		]
 	},
     plugins: [
